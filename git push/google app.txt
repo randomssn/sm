@@ -1,0 +1,39 @@
+python+google app engine
+
+https://developers.google.com/appengine/docs/python/gettingstartedpython27/introduction
+
+
+
+the steps I followed to get GAE 1.7.1 working on Ubuntu 
+open a terminal Ctr-t and make sure you are in the home directory.
+create a project folder. (I used google_projects)
+cd into the project folder
+download GAE 1.7.1
+unzip the file
+delete the zip. (optional)
+Here are the terminal commands for the steps above:
+
+    cd ~
+    mkdir google_projects
+    cd google_projects
+    wget -O gae.zip http://googleappengine.googlecode.com/files/google_appengine_1.7.1.zip
+    unzip gae.zip
+    rm gae.zip
+Now its time to create the project and start the development server.
+
+    cp -r google_appengine/new_project_template testapp
+    python google_appengine/dev_appserver.py testapp
+
+
+or( to change the port number
+    
+ python google_appengine/dev_appserver.py --port 8000 testapp
+then localhost:8000  will display Hello World)
+ 
+The first line simply copies and renames the new_project_template folder into google_proects as testapp. The last line starts the development server. You can stop it with Ctr-C.
+
+With the development server up and running you can view testapp at localhost:8080. You should see "Hello world!".
+
+For details refer
+
+http://askubuntu.com/questions/123553/how-to-install-google-appengine
