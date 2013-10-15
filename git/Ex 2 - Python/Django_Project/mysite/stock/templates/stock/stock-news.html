@@ -1,0 +1,42 @@
+<html>
+  <head>
+       <script>
+           var c = window.setInterval(function(){document.location.reload(true);},5000);
+       </script>
+	
+		{% load staticfiles %}
+		<link href="{% static 'stock/css/main_page.css' %}" type="text/css" rel="stylesheet" />
+       
+  </head>
+
+  <body>
+
+      <div id="content">
+
+          <table rules="all">
+
+              <tr>
+            		<th>Market</th><th>Current Value</th><th>Daily Change</th><th>% Change</th>
+            	</tr>
+
+            	<tr>
+            		<td>BSE</td>
+                <td>{{ bse_index_value }}</td>
+                <td>{{ bse_points_change }}</td>
+                <td>{{ bse_change_percentage }}</td>
+              </tr>
+
+              <tr>
+               	<td>NSE</td>
+              	<td>{{ nse_index_value }}</td>
+                <td>{{ nse_points_change }}</td>
+                <td>{{ nse_change_percentage }}</td>
+              </tr>
+
+          </table>
+
+      </div>
+
+  </body>
+
+</html>

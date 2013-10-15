@@ -1,0 +1,75 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,70,72)
+  { Label1 Label
+    MoveScaled(17,12,11,4)
+    Text = ("Roll No")
+  }
+  { Label2 Label
+    MoveScaled(17,18,7,4)
+    Text = ("Name")
+  }
+  { Label3 Label
+    MoveScaled(17,24,6,4)
+    Text = ("DOB")
+  }
+  { rollno TextBox
+    MoveScaled(27,12,24,4)
+  }
+  { name TextBox
+    MoveScaled(27,18,24,4)
+  }
+  { dob TextBox
+    MoveScaled(27,24,24,4)
+  }
+  { Label4 Label
+    MoveScaled(24,7,24,4)
+    Text = ("Add Student Placement Info")
+  }
+  { Button1 Button
+    MoveScaled(24,65,16,4)
+    Text = ("ADD")
+  }
+  { asocket #Socket
+  }
+  { Button2 Button
+    MoveScaled(6,0,15,6)
+    Text = ("<- Main")
+  }
+  { Label5 Label
+    MoveScaled(17,31,6,4)
+    Text = ("Gender")
+  }
+  { gender TextBox
+    MoveScaled(27,31,24,4)
+  }
+  { Label6 Label
+    MoveScaled(17,38,7,4)
+    Text = ("Address")
+  }
+  { address TextBox
+    MoveScaled(27,38,24,4)
+  }
+  { mobile TextBox
+    MoveScaled(27,45,24,4)
+  }
+  { Label7 Label
+    MoveScaled(17,45,6,4)
+    Text = ("Mobile")
+  }
+  { Label8 Label
+    MoveScaled(17,52,6,4)
+    Text = ("CGPA")
+  }
+  { cgpa TextBox
+    MoveScaled(27,52,24,4)
+  }
+  { arrears TextBox
+    MoveScaled(27,59,24,4)
+  }
+  { Label9 Label
+    MoveScaled(17,59,7,4)
+    Text = ("Arrears")
+  }
+}

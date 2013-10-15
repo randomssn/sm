@@ -1,0 +1,95 @@
+' Gambas class file
+
+Obj[10] As Socket
+i As Integer
+buffer As String
+Public $Con As New Connection
+subuf As String
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+i = 0
+End
+
+Public Procedure Connect()
+                $Con.Close()              ' Close the connection
+                $Con.Type = "MySQL"       ' Type of connection
+                $Con.Host = "localhost"   ' Name of the server
+                $Con.Login = "root"       ' User's name for the connection
+                $Con.Port = "3306"        ' Port to use in the connection, usually 3306
+                $Con.Name = "gambas"      ' Name of the database we want to use
+                $Con.Password = "password"     ' User's password
+                $Con.Open()               ' Open the connection
+                Print $Con.Opened
+End
+
+
+Public Sub Button1_Click()
+
+  
+    ServSock.Type = Net.Internet
+    ServSock.Port = "34540"
+    ServSock.Listen(3)
+    Connect() 
+End
+
+
+Public Sub ServSock_Connection(buffer As String)
+
+  Obj[i] = ServSock.Accept()
+  Obj[i].Blocking = False
+ i = i + 1
+ Print "Request Received"
+
+End
+
+Public Sub Socket_Read()
+
+  ' When some data arrives to
+  ' our server, we respond with
+  ' an echo
+  '*****************************
+  Dim element As String[]
+  Dim sub As String
+  Dim rs As Result
+  Dim details As String
+  If Last.Status <> Net.Connected Then Return
+  Read #Last, subuf, Lof(Last)
+  Print subuf
+   element = Split(subuf, "/")
+      For Each sub In element
+      Print "("; sub; ") ";
+      Next
+  
+If element[0] = "add" Then
+      Print "----add"
+      $Con.Begin()
+      $Con.Exec("INSERT INTO PlacementDB VALUES(&1,&2,&3,&4,&5,&6,&7,&8)", element[1], element[2], element[3], element[4], element[5], element[6], element[7], element[8])
+      $Con.Commit()
+      Message("Your details have been successfully added to the database.")
+  Else If element[0] = "update" Then
+      Print "update"
+       $Con.Begin()
+       $Con.Exec("UPDATE PlacementDB set name='" & element[2] & "',dob='" & element[3] & "',gender='" & element[4] & "',address='" & element[5] & "',mobile='" & element[6] & "',cgpa='" & element[7] & "',arrears='" & element[8] & "' where rollno='" & element[1] & "'")
+       $Con.Commit()
+       Message("The student record has been updated")
+  Else If element[0] = "delete" Then
+  Print "delete"
+   $Con.Begin()
+       $Con.Exec("delete from PlacementDB where rollno='" & element[1] & "'")
+        $Con.Commit()
+       Message("The student details have been deleted.")
+  Else If element[0] = "populate" Then
+    Print "Populating"
+    $Con.Begin()
+    rs = $Con.Exec("select * from PlacementDB where rollno='" & element[1] & "'")
+    details = "details" &/ rs["rollno"] &/ rs["name"] &/ rs["dob"] &/ rs["gender"] &/ rs["address"] &/ rs["mobile"] &/ rs["cgpa"] &/ rs["arrears"]
+  End If
+  
+  
+End
+
+

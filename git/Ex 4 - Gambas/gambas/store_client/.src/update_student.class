@@ -1,0 +1,131 @@
+' Gambas class file
+
+
+Public cb As String
+
+Public Sub Form_Open()
+
+  usocket.Connect("127.0.0.1", 34540)
+
+End
+
+Public Sub Button1_Click()
+
+  update_student.Close
+
+End
+
+Public Sub Button2_Click()
+  Dim p_rollno As String
+  Dim p_name As String
+  Dim p_dob As String
+  Dim p_gender As String
+  Dim p_address As String
+  Dim p_mobile As String
+  Dim p_cgpa As String
+  Dim p_arrears As String
+  Dim details As String
+  
+  p_rollno = rollno_combo.Text
+  p_name = name.Text
+  p_dob = dob.Text
+  p_gender = gender.Text
+  p_address = address.Text
+  p_mobile = mobile.Text
+  p_cgpa = cgpa.Text
+  p_arrears = arrears.Text
+
+  
+  details = "update" &/ p_rollno &/ p_name &/ p_dob &/ p_gender &/ p_address &/ p_mobile &/ p_cgpa &/ p_arrears
+  'Print details
+  ' Write #asocket, "add", 3
+  Write #usocket, details, Len(details)
+End
+
+Public Sub usocket_Ready()
+  '***********************************
+  ' When connection proccess has finished
+  ' successfully, "Connected" event will raise
+  '***********************************
+  
+ Print "connected"
+ cb = "values"
+  Write #usocket, cb, Len(cb)
+  
+
+End
+
+Public Sub usocket_Read()
+
+  Dim rolls As String
+  Dim element As String[]
+  Dim sub As String
+  Dim allval As String
+   If usocket.Status <> Net.Connected Then Return
+  Read #usocket, rolls, Lof(usocket)
+  Print rolls
+  element = Split(rolls, "/")
+  If element[0] = "details" Then
+    
+    Print "values"
+    rollno_combo.Text = element[1]
+    name.Text = element[2]
+    dob.Text = element[3]
+    gender.Text = element[4]
+    address.Text = element[5]
+    mobile.Text = element[6]
+    cgpa.Text = element[7]
+    arrears.Text = element[8]
+    
+Else
+ For Each sub In element
+rollno_combo.Add(sub)
+Next
+  Endif
+
+End
+
+Public Sub id_combo_Change()
+
+Dim cbv As String
+
+cbv = "val" &/ rollno_combo.Text
+Print cbv
+'cbv = regcb.Text
+   Write #usocket, cbv, Len(cbv)
+   
+   Print "combo"
+   
+End
+
+
+Public Sub Button3_Click()
+Dim p_rollno As String
+Dim details As String
+Dim rolls As String
+Dim element As String[]
+
+p_rollno = rollno_combo.Text
+details = "populate" &/ p_rollno
+  'Print details
+  ' Write #asocket, "add", 3
+  Write #usocket, details, Len(details)  
+  
+  Read #usocket, rolls, Lof(usocket)
+  Print rolls
+  element = Split(rolls, "/")
+  If element[0] = "details" Then
+    
+    Print "values"
+    rollno_combo.Text = element[1]
+    name.Text = element[2]
+    dob.Text = element[3]
+    gender.Text = element[4]
+    address.Text = element[5]
+    mobile.Text = element[6]
+    cgpa.Text = element[7]
+    arrears.Text = element[8]
+  
+  End If
+
+End

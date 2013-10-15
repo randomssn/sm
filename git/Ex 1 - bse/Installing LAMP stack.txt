@@ -1,0 +1,50 @@
+Step 1: First sudo -i
+
+Step 2: Then run
+		apt-get update
+		apt-get upgrade
+
+Step 3: Next we shall install Apache, so run the following command:
+		apt-get install apache2
+
+Step 4: Apache will be downloaded and installed. However, it would not start, reason being as follows:
+
+"apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1 for ServerName"
+
+Step 5: To resolve this issue, we need to create a file called "fqdn" which stands for Fully Qualified Domain Name with the following content. Make sure you start the text editor with root access and save the file into /etc/apache2/conf.d/
+		
+"ServerName localhost"
+
+or simply execute the following command:
+
+echo "ServerName localhost" | tee /etc/apache2/conf.d/fqdn
+
+Step 6: By default, Apache points to a website located in /var/www/index.html. We need Apache to point to our own website folder which might be somwhere else,say "home/dv/website". In order to do so we need create a new configuration file for this website and make Apache use that file for its usage. Follow the following steps for it:
+
+1) First, make a copy of the default file located under "/etc/apache2/sites-available" and save it as say "site1"
+
+2) Next, Change DocumentRoot "/var/www" to DocumentRoot "/home/dv/website"
+
+3) Then, Change <Directory /var/www/> to <Directory /home/dv/website/>. Save and Exit the file.
+
+Step 7: Now, we need to disable the default setting using the following command
+
+	a2dissite default
+
+Then, make active the new site using
+
+	a2ensite site1
+
+Step 8: Finally, restart apache.
+
+Steps to install MySQL server
+
+Step 1: Use sudo -i command to gain root access. Enter password when prompted.
+
+Step 2: Then run the following command:
+	
+	apt-get install mysql-client mysql-server mysql-common
+
+
+
+

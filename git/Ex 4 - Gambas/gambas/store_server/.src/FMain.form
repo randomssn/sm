@@ -1,0 +1,12 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,67,50)
+  { ServSock #ServerSocket
+    #MoveScaled(30,16)
+  }
+  { Button1 Button
+    MoveScaled(25,25,16,4)
+    Text = ("Start Listening")
+  }
+}

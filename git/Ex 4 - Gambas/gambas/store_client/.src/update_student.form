@@ -1,0 +1,80 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,70)
+  { usocket #Socket
+  }
+  { Button1 Button
+    MoveScaled(6,0,15,6)
+    Text = ("<- Main")
+  }
+  { Label1 Label
+    MoveScaled(11,12,11,4)
+    Text = ("Roll No")
+  }
+  { Label2 Label
+    MoveScaled(11,18,7,4)
+    Text = ("Name")
+  }
+  { Label3 Label
+    MoveScaled(11,24,6,4)
+    Text = ("DOB")
+  }
+  { name TextBox
+    MoveScaled(21,18,24,4)
+  }
+  { dob TextBox
+    MoveScaled(21,24,24,4)
+  }
+  { Label4 Label
+    MoveScaled(15,7,30,4)
+    Text = ("Update Student Placement Info")
+  }
+  { Button2 Button
+    MoveScaled(29,64,16,4)
+    Text = ("Update")
+  }
+  { Label5 Label
+    MoveScaled(11,31,6,4)
+    Text = ("Gender")
+  }
+  { gender TextBox
+    MoveScaled(21,31,24,4)
+  }
+  { Label6 Label
+    MoveScaled(11,38,7,4)
+    Text = ("Address")
+  }
+  { address TextBox
+    MoveScaled(21,38,24,4)
+  }
+  { mobile TextBox
+    MoveScaled(21,45,24,4)
+  }
+  { Label7 Label
+    MoveScaled(11,45,6,4)
+    Text = ("Mobile")
+  }
+  { Label8 Label
+    MoveScaled(11,52,6,4)
+    Text = ("CGPA")
+  }
+  { cgpa TextBox
+    MoveScaled(21,52,24,4)
+  }
+  { arrears TextBox
+    MoveScaled(21,59,24,4)
+  }
+  { Label9 Label
+    MoveScaled(11,59,7,4)
+    Text = ("Arrears")
+  }
+  { rollno_combo ComboBox
+    MoveScaled(21,12,24,4)
+    Text = ("Please Select One")
+  }
+  { Button3 Button
+    MoveScaled(11,64,16,4)
+    Text = ("Populate")
+  }
+}

@@ -1,0 +1,27 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,64)
+  { Label1 Label
+    MoveScaled(19,12,24,4)
+    Text = ("Remove Student Record")
+  }
+  { Label2 Label
+    MoveScaled(6,21,24,4)
+    Text = ("Roll No.")
+  }
+  { rollno_combo ComboBox
+    MoveScaled(31,21,24,4)
+    Text = ("ComboBox1")
+  }
+  { dsocket #Socket
+  }
+  { Button1 Button
+    MoveScaled(6,0,16,6)
+    Text = ("<- Main")
+  }
+  { Button2 Button
+    MoveScaled(24,32,16,4)
+    Text = ("DELETE")
+  }
+}

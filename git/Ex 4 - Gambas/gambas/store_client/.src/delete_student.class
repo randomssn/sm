@@ -1,0 +1,62 @@
+' Gambas class file
+
+
+Public Sub Label1_MouseDown()
+
+  
+
+End
+Public Sub Form_Open()
+
+   dsocket.Connect("127.0.0.1", 34540)
+
+End
+
+
+Public Sub Button1_Click()
+
+  delete_student.Close
+
+End
+
+Public Sub dsocket_Ready()
+  '***********************************
+  ' When connection proccess has finished
+  ' successfully, "Connected" event will raise
+  '***********************************
+  Dim cb As String
+  Print "connected"
+  cb = "values"
+  Write #dsocket, cb, Len(cb)
+  
+
+End
+
+Public Sub dsocket_Read()
+  Dim rollno As String
+  Dim element As String[]
+  Dim sub As String
+  Dim allval As String
+  If dsocket.Status <> Net.Connected Then Return
+  Read #dsocket, rollno, Lof(dsocket)
+  Print rollno
+  element = Split(rollno, "/")
+  For Each sub In element
+    rollno_combo.Add(sub)
+    Next
+
+  
+
+End
+
+Public Sub Button2_Click()
+
+ Dim id As String
+ id = "delete" &/ rollno_combo.Text
+ Write #dsocket, id, Len(id)
+  
+
+
+End
+
+

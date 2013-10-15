@@ -1,0 +1,39 @@
+' Gambas class file
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+
+End
+
+Public Sub Label1_MouseDown()
+
+  
+
+End
+
+Public Sub add_form_Click()
+
+  add_student.Show 
+
+End
+
+Public Sub update_form_Click()
+
+  update_student.Show
+
+End
+
+Public Sub delete_form_Click()
+
+  delete_student.Show
+
+End
+
+Public Sub Socket1_Read()
+
+  Socket1.Close
+
+End

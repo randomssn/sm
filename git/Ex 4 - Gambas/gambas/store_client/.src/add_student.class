@@ -1,0 +1,47 @@
+' Gambas class file
+
+details As String
+
+p_rollno As String
+p_name As String
+p_dob As String
+p_gender As String
+p_address As String
+p_mobile As String
+p_cgpa As String
+p_arrears As String
+
+Public Sub Form_Open()
+ asocket.Connect("127.0.0.1", 34540)
+End
+
+Public Sub Button2_Click()
+
+  Close asocket
+  add_student.Close
+
+End
+
+Public Sub Button1_Click()
+
+  p_rollno = rollno.Text
+  p_name = name.Text
+  p_dob = dob.Text
+  p_gender = gender.Text
+  p_address = address.Text
+  p_mobile = mobile.Text
+  p_cgpa = cgpa.Text
+  p_arrears = arrears.Text
+  
+  details = "add" &/ p_rollno &/ p_name &/ p_dob &/ p_gender &/ p_address &/ p_mobile &/ p_cgpa &/ p_arrears
+  
+ ' Print album_id
+ ' Print album_name
+ ' Print album_price
+  'Print details
+' Write #asocket, "add", 3
+   Write #asocket, details, Len(details)
+
+End
+
+
